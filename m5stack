@@ -25,19 +25,18 @@ void setup() {
          WL_CONNECTED)) {  // wait for WiFi connection.  等待连接至wifi
 
           M5.Lcd.print("");
-    M5.Lcd.print("WiFi connected.");
-    M5.Lcd.print("IP address: ");
-    M5.Lcd.print(WiFi.localIP());
-    M5.Lcd.print("Code written by thesupersystem");
-      Wire.begin(2,1);  // Wire init, adding the I2C bus.  Wire初始化, 加入i2c总线
-
-    mfrc522.PCD_Init();  // Init MFRC522.  初始化 MFRC522
-    M5.Lcd.println("Please put the card\n\nUID:");
+    M5.Lcd.print("\nWiFi connected.\n");
+    M5.Lcd.print("\nIP address:\n ");
+    M5.Lcd.print( WiFi.localIP());
+    M5.Lcd.print("\nCode written by: \nthesupersystem\n");
+     
+      M5.Lcd.print("\n\Tap card ");
    } else {
         http.end();
         M5.Lcd.print("connect failed");
     }
-
+     Wire.begin(2,1);  // Wire init, adding the I2C bus.  Wire初始化, 加入i2c总线
+mfrc522.PCD_Init();  // Init MFRC522.  初始化 MFRC522
 }
 
 void loop() {
@@ -48,16 +47,17 @@ M5.Lcd.setCursor(40, 47);
         delay(200);
         return;
     }
-    M5.Lcd.fillRect(42, 47, 320, 20, BLACK);
+     M5.Lcd.fillRect(0, 0, 320, 240, BLACK);
+     M5.Lcd.print("\nIP address:");
+     M5.Lcd.print("\n\ ");
+    M5.Lcd.print( WiFi.localIP());
+    M5.Lcd.println("\nCard Detected\n\nUID:");
     for (byte i = 0; i < mfrc522.uid.size;
          i++) {  // Output the stored UID data.  将存储的UID数据输出
         M5.Lcd.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
         M5.Lcd.print(mfrc522.uid.uidByte[i], HEX);
     }
-    M5.Lcd.println("");
+    M5.Lcd.println("\n");
 
 
 }
-
-
-
