@@ -107,6 +107,7 @@ http.end(); //Close connection
     } else {
 
       Serial.println("Unknown card UID, no action taken.");
+      M5.Lcd.println("Unknown card UID, no action taken.");
 
     }
 
