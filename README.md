@@ -6,3 +6,4 @@ rfid tag placed underneath product will trigger content on watchout via a tag re
 product - > tag reader - > nodejs server - > watchout 
 
 https://github.com/untitledresearchlab/googleRFID/blob/main/GOOGLERFID.png
+![alt text](https://github.com/untitledresearchlab/googleRFID/blob/main/GOOGLERFID.png)?raw=true)
