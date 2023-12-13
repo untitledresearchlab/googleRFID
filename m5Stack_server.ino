@@ -22,6 +22,9 @@ const char* password = "l0ck0N3$$1"; // Change this according to wifi PW
 const char *server = "192.168.1.169";
 const int port = 9000;
 
+unsigned long seconds = 1000L; //Notice the L 
+unsigned long minutes = seconds * 60;
+
 void setup() {
     M5.begin(true, true, false);  // Init M5CoreS3.  
     Serial.begin(115200); 
@@ -50,7 +53,7 @@ mfrc522.PCD_Init();  // Init MFRC522.
 void loop() {
 M5.Lcd.setCursor(40, 47);
     if (!mfrc522.PICC_IsNewCardPresent() || !mfrc522.PICC_ReadCardSerial()) {  
-        delay(1000);
+      //  delay(5000);
         return;
     }
      M5.Lcd.fillRect(0, 0, 320, 240, BLACK);
@@ -70,10 +73,12 @@ M5.Lcd.setCursor(40, 47);
           M5.Lcd.println("Card UID: " + cardUID);
            Serial.println(cardUID);
           
-          delay(200);
+          
     
     }
   sendHttpRequest(cardUID);
+  //delay(5000);
+  delay(2 * minutes);
 }
 
 
@@ -113,5 +118,4 @@ http.end(); //Close connection
 
 
 }
-
 
