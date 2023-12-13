@@ -16,3 +16,5 @@ https://github.com/untitledresearchlab/googleRFID/blob/main/GOOGLERFID.png
 3)Read RFID and reupload code into RFID reader (M5Stack_server.ino is the code)
 
 4)Change the delay on the reader accordingly (To ensure that the reader does not read continously when a product is placed on top of it)
+
+5)During installation, remove rfid case and install sensor directly into fabricated product holder.
