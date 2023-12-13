@@ -78,7 +78,7 @@ M5.Lcd.setCursor(40, 47);
     }
   sendHttpRequest(cardUID);
   //delay(5000);
-  delay(2 * minutes);
+  
 }
 
 
@@ -97,6 +97,7 @@ WiFiClient client;
       
       M5.Lcd.println("Trigger Video1");
 http.end(); //Close connection
+delay(2 * minutes); //Change this according to video length. This delay will block any request according to the video length.
     } if (cardUID == "1d5524b") { // Change this according to RFID UID of product
 
       HTTPClient http;
@@ -106,12 +107,12 @@ http.end(); //Close connection
   http.begin(url);  //Specify the URL
   int httpCode = http.GET(); //Make the request
       
-      Serial.println("Trigger Video2");
+       M5.Lcd.println("Trigger Video2");
       http.end(); //Close connection
-
+delay(3 * minutes); //Change this according to video length. This delay will block any request according to the video length.
     } else {
 
-      Serial.println("Unknown card UID, no action taken.");
+      //Serial.println("Unknown card UID, no action taken.");
       M5.Lcd.println("Unknown card UID, no action taken.");
 
     }
